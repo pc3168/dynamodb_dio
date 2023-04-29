@@ -5,9 +5,9 @@
 ### Windows
 
 
-![link para Download DynamoDB] (https://s3.sa-east-1.amazonaws.com/dynamodb-local-sao-paulo/dynamodb_local_latest.zip)
+[link para Download DynamoDB] (https://s3.sa-east-1.amazonaws.com/dynamodb-local-sao-paulo/dynamodb_local_latest.zip)
 
-![link para Donwlaod do AWS CLI] (https://awscli.amazonaws.com/AWSCLIV2-2.0.30.msi)
+[link para Donwlaod do AWS CLI] (https://awscli.amazonaws.com/AWSCLIV2-2.0.30.msi)
 
 ### Linux - AWS CLI 
 ### para realizar o donwload no Ubuntu utiliza o comando abaixo.
@@ -41,9 +41,9 @@ aws dynamodb list-tables --endpoint-url http://localhost:8000
 
 ### link para documentação.
 
-![Link da Documentação DynamoDB Local] (https://docs.aws.amazon.com/pt_br/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html#DynamoDBLocal.DownloadingAndRunning.title)
+[Link da Documentação DynamoDB Local] (https://docs.aws.amazon.com/pt_br/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html#DynamoDBLocal.DownloadingAndRunning.title)
 
-![LInk da documentação AWS CLI] (https://docs.aws.amazon.com/pt_br/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions)
+[LInk da documentação AWS CLI] (https://docs.aws.amazon.com/pt_br/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions)
 
 
 
