@@ -3,14 +3,17 @@
 ## Utilização do dynamoDB Localmente
 
 ### Windows
--```
+
+
 ![link para Download DynamoDB] (https://s3.sa-east-1.amazonaws.com/dynamodb-local-sao-paulo/dynamodb_local_latest.zip)
 
 ![link para Donwlaod do AWS CLI] (https://awscli.amazonaws.com/AWSCLIV2-2.0.30.msi)
 
 ### Linux - AWS CLI 
 ### para realizar o donwload no Ubuntu utiliza o comando abaixo.
+```
 sudo apt-get install awscli
+```
 
 ## Depois utilizei o comando (windows / linux)
 
@@ -27,6 +30,7 @@ aws configure
 ```
 AWS Access Key ID: "fakeMyKeyId"
 AWS Secret Access Key: "fakeSecretAccessKey"
+Região eu digitei: Brasil
 ```
 
 ## e por fim utilizei o comando para verificar se estava tudo ok.
@@ -160,4 +164,39 @@ aws dynamodb query \
     --index-name SongTitleYear-index \
     --key-condition-expression "SongTitle = :v_song and SongYear = :v_year" \
     --expression-attribute-values  '{":v_song":{"S":"Wasting Love"},":v_year":{"S":"1992"} }' --endpoint-url http://localhost:8000
+```
+
+- Comando para consultar todos os registros
+```
+aws dynamodb scan --table-name Music  --endpoint-url http://localhost:8000
+```
+
+- Filtrar por um atributo específico:
+```
+aws dynamodb scan --table-name Music --filter-expression "artist = :a" --expression-attribute-values '{":a":{"S":"Michael Jackson"}}'  --endpoint-url http://localhost:8000
+```
+
+- Limitar a quantidade de resultados
+```
+aws dynamodb scan --table-name Music --limit 2  --endpoint-url http://localhost:8000
+```
+
+- Criando uma tabela chamada produtos com uma chave primária "id" do tipo string e definindo uma capacidade de leitura e escrita de 5 unidades:
+```
+aws dynamodb create-table --table-name produtos --attribute-definitions AttributeName=id,AttributeType=S --key-schema AttributeName=id,KeyType=HASH --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 --endpoint-url http://localhost:8000
+```
+
+- Adicionando um registro na tabela produtos
+```
+aws dynamodb put-item --table-name produtos --item '{"id": {"S": "1"}, "nome": {"S": "Produto A"}, "preco": {"N": "10.99"}}' --endpoint-url http://localhost:8000
+```
+
+- Consultando todos os registros da tabela produtos
+```
+aws dynamodb scan --table-name produtos --endpoint-url http://localhost:8000
+```
+
+- Consultando apenas o produto com o "id" igual a "1"
+```
+aws dynamodb get-item --table-name produtos --key '{"id": {"S": "1"}}' --endpoint-url http://localhost:8000
 ```
