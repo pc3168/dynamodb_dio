@@ -196,7 +196,27 @@ aws dynamodb put-item --table-name produtos --item '{"id": {"S": "1"}, "nome": {
 aws dynamodb scan --table-name produtos --endpoint-url http://localhost:8000
 ```
 
-- Consultando apenas o produto com o "id" igual a "1"
+- Consultando apenas o produtos com o "id" igual a "1"
 ```
 aws dynamodb get-item --table-name produtos --key '{"id": {"S": "1"}}' --endpoint-url http://localhost:8000
+```
+
+- Criando uma tabela chamada pessoas com uma chave primária "cpf" do tipo string e definindo uma capacidade de leitura e escrita de 5 unidades
+```
+aws dynamodb create-table --table-name pessoas --attribute-definitions AttributeName=cpf,AttributeType=S --key-schema AttributeName=cpf,KeyType=HASH --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 --endpoint-url http://localhost:8000
+```
+
+- Adicionando um registro na tabela pessoas
+```
+aws dynamodb put-item --table-name pessoas --item '{"cpf": {"S": "12345678901"}, "nome": {"S": "Fulano"}, "idade": {"N": "30"}, "cidade": {"S": "São Paulo"}}' --endpoint-url http://localhost:8000
+```
+
+- Consultando todos os registros da tabela pessoas
+```
+aws dynamodb scan --table-name pessoas --endpoint-url http://localhost:8000
+```
+
+- Consultando apenas a pessoa com o CPF.
+```
+aws dynamodb get-item --table-name pessoas --key '{"cpf": {"S": "12345678901"}}' --endpoint-url http://localhost:8000
 ```
